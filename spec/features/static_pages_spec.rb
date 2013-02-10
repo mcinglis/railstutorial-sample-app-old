@@ -26,7 +26,7 @@ feature "Static pages" do
     scenario "Visting" do
       visit "/static_pages/about"
       page.should have_selector "h1", text: "About us"
-      page.html.should have_selector "title", text: title_text("About uz")
+      page.html.should have_selector "title", text: title_text("About us")
     end
   end
 
