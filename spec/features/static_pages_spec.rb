@@ -1,28 +1,35 @@
-require 'spec_helper'
+require "spec_helper"
 
 feature "Static pages" do
 
-  given :app_name do
-    "Examplr"
+  subject { page }
+
+  describe "Home page" do
+    before { visit root_path }
+
+    it { should have_selector "h1", text: "Examplr" }
+    it { html.should have_selector "title", text: full_title("") }
+    it { html.should_not have_selector "title", text: "Home" }
   end
 
-  scenario "Visting the Home page" do
-    visit "/static_pages/home"
-    page.should have_selector "h1", text: app_name
-    page.html.should have_selector "title", text: app_name
-    page.html.should_not have_selector "title", text: "Home"
+  describe "Help page" do
+    before { visit help_path }
+
+    it { should have_selector "h1", text: "Help" }
+    it { html.should have_selector "title", text: full_title("Help") }
   end
 
-  scenario "Visting the Help page" do
-    visit "/static_pages/help"
-    page.should have_selector "h1", text: "Help"
-    page.html.should have_selector "title", text: "Help"
+  describe "About page" do
+    before { visit about_path }
+
+    it { should have_selector "h1", text: "About" }
+    it { html.should have_selector "title", text: full_title("About") }
   end
 
-  scenario "Visting the About page" do
-    visit "/static_pages/about"
-    page.should have_selector "h1", text: "About"
-    page.html.should have_selector "title", text: "About"
-  end
+  describe "Contact page" do
+    before { visit contact_path }
 
+    it { should have_selector "h1", text: "Contact" }
+    it { html.should have_selector "title", text: full_title("Contact") }
+  end
 end
