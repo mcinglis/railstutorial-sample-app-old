@@ -6,6 +6,7 @@ gem "jquery-rails"
 
 group :assets do
   gem "sass-rails"
+  gem "uglifier"
 end
 
 group :production do
