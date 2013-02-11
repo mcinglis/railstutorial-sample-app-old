@@ -2,6 +2,8 @@ source :rubygems
 
 gem "rails", "3.2.11"
 
+gem "bcrypt-ruby"
+
 gem "jquery-rails"
 
 group :assets do
