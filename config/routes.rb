@@ -1,12 +1,15 @@
 Railstutorial::Application.routes.draw do
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
-  match "/signup", to: "users#new"
+  get "/signup"     => "users#new"
+  get "/signin"      => "sessions#new"
+  delete "/signout" => "sessions#destroy"
 
-  match "/help", to: "static_pages#help"
-  match "/about", to: "static_pages#about"
-  match "/contact", to: "static_pages#contact"
+  get "/help"       => "static_pages#help"
+  get "/about"      => "static_pages#about"
+  get "/contact"    => "static_pages#contact"
 
   root to: "static_pages#home"
 
